@@ -284,6 +284,7 @@ $(document).ready(function () {
           log(time() + " - Основное питание восстановлено!");
           clearInterval(power);
         } else {
+          log(time() + " - Основное питание отключено!");
           al(
             "ЭП отключено, запущено резервное питание! До восстановления основго питания осталось: " +
               temp +
@@ -296,7 +297,7 @@ $(document).ready(function () {
       // ПОЛОМКА ДАТЧИКОВ!
       let c_crash = 0;
       crash.forEach((el) => {
-        c_crash++;
+        if(el) c_crash++;
       });
       if (c_crash == 6) {
         al(
