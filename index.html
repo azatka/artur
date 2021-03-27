@@ -41,13 +41,13 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row mt-2">
         <div class="col-lg-8" id="plan">
-          <img src="./plan.png" alt="План" style="width: 100%" />
+          <img src="./img/plan.png" alt="План" style="width: 100%" />
         </div>
         <div class="col-lg-4">
           <div class="form-group">
@@ -153,12 +153,17 @@
         <div class="col-lg-4 text-center">
           <h5>Работа системы</h5>
           <div class="row">
-            <div class="col-lg-6">
-              <button class="btn btn-primary w-75" id="start">Старт</button>
+            <div class="col-lg-4">
+              <button class="btn btn-primary w-100" id="start">Старт</button>
             </div>
-            <div class="col-lg-6">
-              <button class="btn btn-danger w-75" id="stop" disabled>
+            <div class="col-lg-4">
+              <button class="btn btn-danger w-100" id="stop" disabled>
                 Стоп
+              </button>
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-info w-100" id="repair" disabled>
+                Исправить
               </button>
             </div>
           </div>
@@ -166,6 +171,13 @@
             <div class="col-lg-12">
               <span id="time"></span>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-12">
+          <div id="alert" class="alert alert-danger" role="alert" style="display: none;">
+            Это основное уведомление — check it out!
           </div>
         </div>
       </div>
