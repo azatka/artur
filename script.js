@@ -51,7 +51,7 @@ $(document).ready(function () {
       timeOfRecovery[0] = setInterval(() => {
         if (point[0] == 6) {
           recovery[0] = false;
-          log(time() + " - В комнате 1 джвижение прекращено!");
+          log(time() + " - В комнате 1 движение прекращено!");
           clearInterval(timeOfRecovery[0]);
         } else {
           point[0]++;
@@ -69,7 +69,7 @@ $(document).ready(function () {
       timeOfRecovery[1] = setInterval(() => {
         if (point[1] == 6) {
           recovery[1] = false;
-          log(time() + " - В комнате 2 джвижение прекращено!");
+          log(time() + " - В комнате 2 движение прекращено!");
           clearInterval(timeOfRecovery[1]);
         } else {
           point[1]++;
@@ -278,13 +278,13 @@ $(document).ready(function () {
     // Аварии
     if (rnd2 == 5) {
       let temp = Math.floor(Math.random() * (15 - 5) + 5);
+      log(time() + " - Основное питание отключено!");
       power = setInterval(() => {
         if (temp == 0) {
           $("#alert").hide();
           log(time() + " - Основное питание восстановлено!");
           clearInterval(power);
         } else {
-          log(time() + " - Основное питание отключено!");
           al(
             "ЭП отключено, запущено резервное питание! До восстановления основго питания осталось: " +
               temp +
