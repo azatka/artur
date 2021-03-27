@@ -253,7 +253,7 @@ $(document).ready(function () {
     $("#alert").text(text);
     $("#alert").show();
   };
-
+  var power = 0;
   let cycle = () => {
     getDetectInfo();
     let rnd = Math.floor(Math.random() * (30 - 0) + 0);
@@ -278,7 +278,7 @@ $(document).ready(function () {
     // Аварии
     if (rnd2 == 5) {
       let temp = Math.floor(Math.random() * (15 - 5) + 5);
-      var power = setInterval(() => {
+      power = setInterval(() => {
         if (temp == 0) {
           $("#alert").hide();
           log(time() + " - Основное питание восстановлено!");
