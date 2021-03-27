@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  console.log("version 3.1");
   setInterval(() => {
     $("#time").text(time());
   }, 100);
