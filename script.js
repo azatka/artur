@@ -36,6 +36,13 @@ $(document).ready(function () {
     $("#log").val(log_text);
   };
 
+  let attention = (text) => {
+    al(text);
+    setTimeout(() => {
+      $("#alert").hide();
+    }, 5000);
+  };
+
   var err = [false, false];
   var err1 = [false, false];
   var point = [6, 6];
@@ -287,7 +294,7 @@ $(document).ready(function () {
           clearInterval(power);
         } else {
           al(
-            "ЭП отключено, запущено резервное питание! До восстановления основго питания осталось: " +
+            "ЭП отключено, запущено резервное питание! До восстановления основного питания осталось: " +
               temp +
               " секунд."
           );
@@ -298,7 +305,7 @@ $(document).ready(function () {
       // ПОЛОМКА ДАТЧИКОВ!
       let c_crash = 0;
       crash.forEach((el) => {
-        if(el) c_crash++;
+        if (el) c_crash++;
       });
       if (c_crash == 6) {
         al(
@@ -308,6 +315,7 @@ $(document).ready(function () {
       let rnd3 = Math.floor(Math.random() * (6 - 0) + 0);
       if (rnd3 == 2 && !err[0] && !recovery[0] && move_detect[0]) {
         log(time() + " - В комнате 1 связь с датчиком движения потеряна!");
+        attention(time() + " - В комнате 1 связь с датчиком движения потеряна!")
         point[0] = "N/A";
         clearInterval(sims[0]);
         crash[0] = true;
@@ -316,6 +324,7 @@ $(document).ready(function () {
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
       } else if (rnd3 == 3 && !err[1] && !recovery[1] && move_detect[1]) {
         log(time() + " - В комнате 2 связь с датчиком движения потеряна!");
+        attention(time() + " - В комнате 2 связь с датчиком движения потеряна!")
         point[1] = "N/A";
         clearInterval(sims[1]);
         crash[2] = true;
@@ -323,7 +332,10 @@ $(document).ready(function () {
         $("#move_detect_2").prop("disabled", true);
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
       } else if (rnd3 == 0 && !err1[0] && window_detect[0]) {
-        log(time() + " - В комнате 1 связь с датчиком разбития потеряна!");
+        log(
+          time() + " - В комнате 1 связь с датчиком разбития стекла потеряна!"
+        );
+        attention(time() + " - В комнате 1 связь с датчиком разбития стекла потеряна!")
         s_gc[0] = "N/A";
         clearInterval(sims[2]);
         crash[1] = true;
@@ -331,7 +343,10 @@ $(document).ready(function () {
         $("#window_detect_1").prop("disabled", true);
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
       } else if (rnd3 == 1 && !err1[1] && window_detect[1]) {
-        log(time() + " - В комнате 2 связь с датчиком разбития потеряна!");
+        log(
+          time() + " - В комнате 2 связь с датчиком разбития стекла потеряна!"
+        );
+        attention(time() + " - В комнате 2 связь с датчиком разбития стекла потеряна!")
         s_gc[1] = "N/A";
         clearInterval(sims[3]);
         crash[3] = true;
@@ -340,13 +355,15 @@ $(document).ready(function () {
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
       } else if (rnd3 == 4 && door_detect[0]) {
         crash[4] = true;
-        log(time() + " - В комнате 1 связь с датчиком двери потеряна!");
+        log(time() + " - В комнате 1 связь с датчиком открытия потеряна!");
+        attention(time() + " - В комнате 1 связь с датчиком открытия потеряна!")
         $("#door_detect_1").prop("checked", false);
         $("#door_detect_1").prop("disabled", true);
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
       } else if (rnd3 == 5 && door_detect[1]) {
         crash[5] = true;
-        log(time() + " - В комнате 2 связь с датчиком двери потеряна!");
+        log(time() + " - В комнате 2 связь с датчиком открытия потеряна!");
+        attention(time() + " - В комнате 2 связь с датчиком открытия потеряна!")
         $("#door_detect_2").prop("checked", false);
         $("#door_detect_2").prop("disabled", true);
         if ($("#repair").prop("disabled")) $("#repair").prop("disabled", false);
